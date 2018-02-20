@@ -29,9 +29,15 @@ module alu (
     always @* begin
         case (alu_opcode)
             // PERFORM ALU OPERATIONS DEFINED ABOVE
+            `ALU_SRA:   alu_result = alu_op_x>>>alu_op_y;
+            `ALU_SRL:   alu_result = alu_op_x>>alu_op_y;
+            `ALU_SLL:   alu_result = alu_op_x<<alu_op_y;
+            `ALU_MUL:   alu_result = alu_op_x_signed * alu_op_y_signed;
+            `ALU_MUL:   alu_result = alu_op_x_signed * alu_op_y_signed;
             `ALU_ADD:   alu_result = alu_op_x + alu_op_y;
             `ALU_ADDU:  alu_result = alu_op_x + alu_op_y;
             `ALU_AND:   alu_result = alu_op_x & alu_op_y;
+            `ALU_XOR:   alu_result = alu_op_x ^ alu_op_y;
             `ALU_OR:    alu_result = alu_op_x | alu_op_y;
             `ALU_SUB:   alu_result = alu_op_x - alu_op_y;
             `ALU_SUBU:  alu_result = alu_op_x - alu_op_y;

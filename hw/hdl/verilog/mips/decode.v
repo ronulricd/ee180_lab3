@@ -106,6 +106,7 @@ module decode (
             {`SLTIU, `DC6}:     alu_opcode = `ALU_SLTU;
             {`ANDI, `DC6}:      alu_opcode = `ALU_AND;
             {`ORI, `DC6}:       alu_opcode = `ALU_OR;
+            {`XORI, `DC6}:      alu_opcode = `ALU_XOR;
             {`LB, `DC6}:        alu_opcode = `ALU_ADD;
             {`LW, `DC6}:        alu_opcode = `ALU_ADD;
             {`LBU, `DC6}:       alu_opcode = `ALU_ADD;
@@ -113,18 +114,22 @@ module decode (
             {`SW, `DC6}:        alu_opcode = `ALU_ADD;
             {`BEQ, `DC6}:       alu_opcode = `ALU_SUBU;
             {`BNE, `DC6}:       alu_opcode = `ALU_SUBU;
+            {`SPECIAL2, `MUL}:  alu_opcode = `ALU_MUL;
             {`SPECIAL, `ADD}:   alu_opcode = `ALU_ADD;
             {`SPECIAL, `ADDU}:  alu_opcode = `ALU_ADDU;
             {`SPECIAL, `SUB}:   alu_opcode = `ALU_SUB;
             {`SPECIAL, `SUBU}:  alu_opcode = `ALU_SUBU;
             {`SPECIAL, `AND}:   alu_opcode = `ALU_AND;
             {`SPECIAL, `OR}:    alu_opcode = `ALU_OR;
+            {`SPECIAL, `XOR}:   alu_opcode = `ALU_XOR;
             {`SPECIAL, `MOVN}:  alu_opcode = `ALU_PASSX;
             {`SPECIAL, `MOVZ}:  alu_opcode = `ALU_PASSX;
             {`SPECIAL, `SLT}:   alu_opcode = `ALU_SLT;
             {`SPECIAL, `SLTU}:  alu_opcode = `ALU_SLTU;
             {`SPECIAL, `SLL}:   alu_opcode = `ALU_SLL;
             {`SPECIAL, `SRL}:   alu_opcode = `ALU_SRL;
+            {`SPECIAL, `SRA}:   alu_opcode = `ALU_SRA;
+            {`SPECIAL, `SRAV}:  alu_opcode = `ALU_SRA;
             {`SPECIAL, `SLLV}:  alu_opcode = `ALU_SLL;
             {`SPECIAL, `SRLV}:  alu_opcode = `ALU_SRL;
             // compare rs data to 0, only care about 1 operand
@@ -152,9 +157,11 @@ module decode (
     wire use_imm = &{op != `SPECIAL, op != `SPECIAL2, op != `BNE, op != `BEQ}; // where to get 2nd ALU operand from: 0 for RtData, 1 for Immediate
 
     wire [31:0] imm_sign_extend = {{16{immediate[15]}}, immediate};
+    wire [31:0] imm_zero_extended = {{16{1'b0}}, immediate};
     wire [31:0] imm_upper = {immediate, 16'b0};
 
-    wire [31:0] imm = (op == `LUI) ? imm_upper : imm_sign_extend;
+    wire isZeroExtended = |{op == `ORI, op == `XORI, op == `ADDIU, op == `SLTIU}; 
+    wire [31:0] imm = (op == `LUI) ? imm_upper : (isZeroExtended) ? imm_zero_extended: imm_sign_extend;
 
 //******************************************************************************
 // forwarding and stalling logic
@@ -207,7 +214,7 @@ module decode (
 // Memory control
 //******************************************************************************
     assign mem_we = |{op == `SW, op == `SB, op == `SC};    // write to memory
-    assign mem_read = 1'b0;                     // use memory data for writing to a register
+    assign mem_read = |{op == `LW, op == `LB, op == `LBU, op == `LL}; // use memory data for writing to a register
     assign mem_byte = |{op == `SB, op == `LB, op == `LBU};    // memory operations use only one byte
     assign mem_signextend = ~|{op == `LBU};     // sign extend sub-word memory reads
 
@@ -227,9 +234,15 @@ module decode (
 //******************************************************************************
 
     wire isEqual = rs_data == rt_data;
+    wire gtz = $signed(rs_data) > 0;
+    wire equalZero = rs_data == 0;
 
     assign jump_branch = |{isBEQ & isEqual,
-                           isBNE & ~isEqual};
+                           isBNE & ~isEqual,
+                           isBGTZ & gtz,
+                           isBLTZNL & ~gtz,
+                           isBGEZNL & (gtz | equalZero),
+                           isBLEZ & (~gtz | equalZero)};
 
     assign jump_target = isJ;
     assign jump_reg = 1'b0;
