@@ -29,9 +29,6 @@ module alu (
     always @* begin
         case (alu_opcode)
             // PERFORM ALU OPERATIONS DEFINED ABOVE
-            `ALU_SRA:   alu_result = alu_op_x>>>alu_op_y;
-            `ALU_SRL:   alu_result = alu_op_x>>alu_op_y;
-            `ALU_SLL:   alu_result = alu_op_x<<alu_op_y;
             `ALU_MUL:   alu_result = alu_op_x_signed * alu_op_y_signed;
             `ALU_MUL:   alu_result = alu_op_x_signed * alu_op_y_signed;
             `ALU_ADD:   alu_result = alu_op_x + alu_op_y;
@@ -45,6 +42,7 @@ module alu (
             `ALU_SLT:   alu_result = alu_op_x_signed < alu_op_y_signed;
             `ALU_SRL:   alu_result = alu_op_y >> alu_op_x[4:0]; // shift operations are Y >> X
             `ALU_SLL:   alu_result = alu_op_y << alu_op_x[4:0];
+            `ALU_SRA:   alu_result = alu_op_y_signed >>> alu_op_x[4:0];
             `ALU_PASSX: alu_result = alu_op_x;
             `ALU_PASSY: alu_result = alu_op_y;
             default:    alu_result = 32'hxxxxxxxx;   // undefined
