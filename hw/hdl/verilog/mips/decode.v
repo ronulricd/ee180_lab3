@@ -81,6 +81,8 @@ module decode (
 //******************************************************************************
 
     wire isJ    = (op == `J);
+    wire isJal    = (op == `JAL);
+    wire isJr   = (op == `SPECIAL) & (funct == `JR);
 
 //******************************************************************************
 // shift instruction decode
@@ -122,6 +124,7 @@ module decode (
             {`SPECIAL, `SUBU}:  alu_opcode = `ALU_SUBU;
             {`SPECIAL, `AND}:   alu_opcode = `ALU_AND;
             {`SPECIAL, `OR}:    alu_opcode = `ALU_OR;
+            {`SPECIAL, `NOR}:   alu_opcode = `ALU_NOR;
             {`SPECIAL, `XOR}:   alu_opcode = `ALU_XOR;
             {`SPECIAL, `MOVN}:  alu_opcode = `ALU_PASSX;
             {`SPECIAL, `MOVZ}:  alu_opcode = `ALU_PASSX;
@@ -168,22 +171,30 @@ module decode (
 // forwarding and stalling logic
 //******************************************************************************
 
-    wire forward_rs_mem = &{rs_addr == reg_write_addr_mem, rs_addr != `ZERO, reg_we_mem};
+    wire forward_rs_mem = &{rs_addr == reg_write_addr_mem, rs_addr != `ZERO, reg_we_mem,
+        ~&{reg_we_ex, reg_write_addr_ex == rs_addr}};
+    wire forward_rs_ex = &{rs_addr == reg_write_addr_ex, rs_addr != `ZERO, reg_we_ex};
+    wire forward_rt_mem = &{rt_addr == reg_write_addr_mem, rt_addr != `ZERO, reg_we_mem,
+        ~&{reg_we_ex, reg_write_addr_ex == rt_addr}};
+    wire forward_rt_ex = &{rt_addr == reg_write_addr_ex, rt_addr != `ZERO, reg_we_ex};
 
-    assign rs_data = forward_rs_mem ? reg_write_data_mem : rs_data_in;
-    assign rt_data = rt_data_in;
+    assign rs_data = forward_rs_mem ? reg_write_data_mem : 
+        forward_rs_ex ? alu_result_ex : rs_data_in;
+    assign rt_data = forward_rt_mem ? reg_write_data_mem : 
+        forward_rt_ex ? alu_result_ex : rt_data_in;
 
     wire rs_mem_dependency = &{rs_addr == reg_write_addr_ex, mem_read_ex, rs_addr != `ZERO};
+    wire rt_mem_dependency = &{rt_addr == reg_write_addr_ex, mem_read_ex, rt_addr != `ZERO};
 
     wire isLUI = op == `LUI;
     wire read_from_rs = ~|{isLUI, jump_target, isShiftImm};
 
-    wire isALUImm = |{op == `ADDI, op == `ADDIU, op == `SLTI, op == `SLTIU, op == `ANDI, op == `ORI};
+    wire isALUImm = |{op == `ADDI, op == `ADDIU, op == `SLTI, op == `SLTIU, op == `ANDI, op == `ORI, op == `XORI};
     wire read_from_rt = ~|{isLUI, jump_target, isALUImm, mem_read};
 
-    assign stall = rs_mem_dependency & read_from_rs;
+    assign stall = (rs_mem_dependency & read_from_rs) | (rt_mem_dependency & read_from_rt);
 
-    assign jr_pc = rs_data;
+    assign jr_pc = rs_data[25:21];
     assign mem_write_data = rt_data;
 
 //******************************************************************************
@@ -200,7 +211,7 @@ module decode (
     // for immediate operations, use Imm
     // otherwise use rt
 
-    assign alu_op_y = (use_imm) ? imm : rt_data;
+    assign alu_op_y = (use_imm) ? imm : (isJal) ? 5'b10000 : rt_data;
     assign reg_write_addr = (use_imm) ? rt_addr : rd_addr;
 
     // determine when to write back to a register (any operation that isn't an
@@ -225,10 +236,10 @@ module decode (
     assign mem_sc_id = (op == `SC);
 
     // 'atomic_id' is high when a load-linked has not been followed by a store.
-    assign atomic_id = 1'b0;
+    assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id) ? 1'b0 : 1'b1;
 
     // 'mem_sc_mask_id' is high when a store conditional should not store
-    assign mem_sc_mask_id = 1'b0;
+    assign mem_sc_mask_id = (atomic_id) ? 1'b0 : 1'b1;
 
 //******************************************************************************
 // Branch resolution
@@ -245,7 +256,7 @@ module decode (
                            isBGEZNL & (gtz | equalZero),
                            isBLEZ & (~gtz | equalZero)};
 
-    assign jump_target = isJ;
-    assign jump_reg = 1'b0;
+    assign jump_target = isJ | isJal;
+    assign jump_reg = isJr;
 
 endmodule
