@@ -8,21 +8,15 @@ Disassembly of section .text:
        0:	3c108002 	lui	s0,0x8002
        4:	34110001 	li	s1,0x1
        8:	3c087fff 	lui	t0,0x7fff
-       c:	00000000 	nop
-      10:	3508ffff 	ori	t0,t0,0xffff
-      14:	34090001 	li	t1,0x1
-	...
-      20:	01095020 	add	t2,t0,t1
-      24:	00005824 	and	t3,zero,zero
-	...
-      30:	3c0b8000 	lui	t3,0x8000
-	...
-      3c:	016a6026 	xor	t4,t3,t2
-	...
-      48:	218c0001 	addi	t4,t4,1
-	...
-      54:	ae0c0004 	sw	t4,4(s0)
-      58:	ae110000 	sw	s1,0(s0)
-      5c:	08000017 	j	5c <boot+0x5c>
-      60:	00000000 	nop
+       c:	3508ffff 	ori	t0,t0,0xffff
+      10:	34090001 	li	t1,0x1
+      14:	01095020 	add	t2,t0,t1
+      18:	00005824 	and	t3,zero,zero
+      1c:	3c0b8000 	lui	t3,0x8000
+      20:	016a6026 	xor	t4,t3,t2
+      24:	218c0001 	addi	t4,t4,1
+      28:	ae0c0004 	sw	t4,4(s0)
+      2c:	ae110000 	sw	s1,0(s0)
+      30:	0800000c 	j	30 <boot+0x30>
+      34:	00000000 	nop
 	...
