@@ -216,7 +216,7 @@ module decode (
 
     // determine when to write back to a register (any operation that isn't an
     // unconditional store, non-linking branch, or non-linking jump)
-    assign reg_we = ~|{(mem_we & (op != `SC)), isJ, isBGEZNL, isBGTZ, isBLEZ, isBLTZNL, isBNE, isBEQ};
+    assign reg_we = ~|{(mem_we & (op != `SC)), isJ, isJr, isBGEZNL, isBGTZ, isBLEZ, isBLTZNL, isBNE, isBEQ};
 
     // determine whether a register write is conditional
     assign movn = &{op == `SPECIAL, funct == `MOVN};
@@ -236,7 +236,8 @@ module decode (
     assign mem_sc_id = (op == `SC);
 
     // 'atomic_id' is high when a load-linked has not been followed by a store.
-    assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id) ? 1'b0 : 1'b1;
+    assign atomic_id = 1'b1;
+    // assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id) ? 1'b0 : 1'b1;
 
     // 'mem_sc_mask_id' is high when a store conditional should not store
     assign mem_sc_mask_id = (atomic_id) ? 1'b0 : 1'b1;
