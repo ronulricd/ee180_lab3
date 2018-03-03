@@ -4,7 +4,7 @@ lbu 1
 fwd_idrs_ex 1
 sll 1
 beq 1
-jr 0
+jr 1
 mul 1
 sltiu 1
 stall_idrt_ex 1
@@ -18,12 +18,15 @@ sb 1
 srlv 1
 fwd_idrt_ex 1
 andi 1
+llsc_no_stores 12816
 and 1
 add 1
 jal 0
 load_use_hazard 1
 lui 1
 bne 1
+jr_test 1
+llsc_stores 12817
 xor 1
 fwd_idrs_wb 1
 bgtz 1

@@ -194,7 +194,6 @@ module decode (
 
     assign stall = (rs_mem_dependency & read_from_rs) | (rt_mem_dependency & read_from_rt);
 
-    assign jr_pc = rs_data[25:21];
     assign mem_write_data = rt_data;
 
 //******************************************************************************
@@ -232,15 +231,14 @@ module decode (
 
 //******************************************************************************
 // Load linked / Store conditional
-//******************************************************************************
+//******************************************************************************  
     assign mem_sc_id = (op == `SC);
 
     // 'atomic_id' is high when a load-linked has not been followed by a store.
-    assign atomic_id = 1'b1;
-    // assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id) ? 1'b0 : 1'b1;
+    assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id & atomic_ex) ? 1'b0 : 1'b1;
 
     // 'mem_sc_mask_id' is high when a store conditional should not store
-    assign mem_sc_mask_id = (atomic_id) ? 1'b0 : 1'b1;
+    assign mem_sc_mask_id = (mem_sc_id) ? ((atomic_id) ? 1'b0 : 1'b1) : 1'b0;
 
 //******************************************************************************
 // Branch resolution
@@ -259,5 +257,6 @@ module decode (
 
     assign jump_target = isJ | isJal;
     assign jump_reg = isJr;
+    assign jr_pc = rs_data[31:0];
 
 endmodule
