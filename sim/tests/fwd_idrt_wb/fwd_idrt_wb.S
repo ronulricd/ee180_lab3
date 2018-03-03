@@ -25,9 +25,7 @@ boot:
     sw      $t0, 0($t5)
     lw      $t4, 0($t5)        # Performs lw operation and then or operation, which is hazard 
     or      $t2, $t1, $t4
-    nop
     xori    $t3, $t2, 0xfffe
-    nop
     sw      $t3, 4($s0)         # Set the test result
     sw      $s1, 0($s0)         # Set 'done'
 

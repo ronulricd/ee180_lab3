@@ -1,4 +1,69 @@
-TODO: Write your lab report here. See the handout for more information.
+Lab 3 Report
+Ron Domingo (rdomingo) and Michael Lu (mingci7)
 
+Instructions Implemented:
+add
+addi
+addiu
+addu
+and
+andi
+beq
+bgez
+bgtz
+blez
+bltz
+bne
+j
+jal
+jalr
+jr
+lb
+lbu
+ll
+lui
+lw
+movn
+movz
+mul
+nor
+or
+ori
+sb
+sc
+sll
+sllv
+slt
+slti
+sltiu
+sltu
+sra
+srav
+srl
+srlv
+sub
+subu
+sw
+xor
+xori
 
-Hi this is Michael
+Control and Datapath Modifications
+In order to handle forwarding and stalling we first had to identify the stages in our processor that produced and consumed data. With our five-stage pipeline, the two stages that both produce and consume new values are the execute and memory stages. Using this knowledge, we created two forwarding signals for each $rs and $rt. The signals and their conditions are listed below:
+
+forward_rs_mem: Signal goes high when data for the rs field of the instruction needs to be forwarded from the memory stage of a previous instruction. More specifically, the signal goes high if the $rs address of the current instruction is the same as the register write address of a previous instruction AND the $rs address is not zero AND the previous instruction is writing to that register address AND the instruction immediately before the current instruction is not also writing to the same register. 
+
+forward_rt_mem: Signal goes high when the data for the rt field of the instruction needs to be forwarded from the memory stage of a previous instruction. The same specifications turn this signal high as the forward_rs_mem signal described above, but with the address specified by rt. 
+
+forward_rs_ex: Signal goes high when data for the rs field needs to be forwarded following the ALU stage of a previous instruction. More specifically, the signal goes high if the rs address of the current instruction is the same as the register write address of the preceding instruction AND the rs address is not zero AND the preceding instruction is actually going to write the result into the specified register. 
+
+forward_rt_ex: Signal goes high when data for the rt field needs to be forwarded following the ALU stage of a previous instruction. The same specifications turn this signal high we the forward_rs_ex signal described above, but with the address specified by rt.
+
+Using these signals, the rs_data for the current instruction is set to these values:
+    If forward_rs_ex is high -> the output of the preceding instruction's ALU output 
+    If forward_rs_mem is high -> the value that was just pulled from the memory stage of a previous instruction
+    If no forwarding -> the value of rs that was read from the registers
+
+Similarly, the rt_data for the current instruction is set to these values:
+    If forward_rt_ex is high -> the output of the preceding instruction's ALU output 
+    If forward_rt_mem is high -> the value that was just pulled from the memory stage of a previous instruction
+    If no forwarding -> the value of rt that was read from the registers

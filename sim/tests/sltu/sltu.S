@@ -20,11 +20,7 @@ boot:
     ori     $s1, $0, 1          # Prepare the 'done' status
     addi    $t1, $0, 20
     addiu   $t2, $0, 0xffff
-    nop
-    nop
     sltu    $t0, $t1, $t2
-    nop
-    nop
     sw      $t0, 4($s0)         # Set the test result
     sw      $s1, 0($s0)         # Set 'done'
 

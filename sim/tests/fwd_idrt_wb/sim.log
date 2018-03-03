@@ -3,6 +3,6 @@ No input data buffer
 No output buffer
 Running userlogic for maximum of 1000 cycles
 VCD info: dumpfile tests/fwd_idrt_wb/streamwave.vcd opened for output.
-Userlogic ran for 16 cycles
+Userlogic ran for 14 cycles
 status register = 1
 test register = 1

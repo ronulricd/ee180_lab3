@@ -81,8 +81,9 @@ module decode (
 //******************************************************************************
 
     wire isJ    = (op == `J);
-    wire isJal    = (op == `JAL);
+    wire isJal  = (op == `JAL);
     wire isJr   = (op == `SPECIAL) & (funct == `JR);
+    wire isJalr   = (op == `SPECIAL) & (funct == `JALR);
 
 //******************************************************************************
 // shift instruction decode
@@ -158,7 +159,7 @@ module decode (
 // Compute value for 32 bit immediate data
 //******************************************************************************
 
-    wire use_imm = &{op != `SPECIAL, op != `SPECIAL2, op != `BNE, op != `BEQ}; // where to get 2nd ALU operand from: 0 for RtData, 1 for Immediate
+    wire use_imm = &{op != `SPECIAL, op != `SPECIAL2, op != `BNE, op != `BEQ, ~isJal, ~isJalr}; // where to get 2nd ALU operand from: 0 for RtData, 1 for Immediate
 
     wire [31:0] imm_sign_extend = {{16{immediate[15]}}, immediate};
     wire [31:0] imm_zero_extended = {{16{1'b0}}, immediate};
@@ -171,11 +172,13 @@ module decode (
 // forwarding and stalling logic
 //******************************************************************************
 
+    // Signals go high when data needs to be forwarded from the memory stage
     wire forward_rs_mem = &{rs_addr == reg_write_addr_mem, rs_addr != `ZERO, reg_we_mem,
         ~&{reg_we_ex, reg_write_addr_ex == rs_addr}};
-    wire forward_rs_ex = &{rs_addr == reg_write_addr_ex, rs_addr != `ZERO, reg_we_ex};
     wire forward_rt_mem = &{rt_addr == reg_write_addr_mem, rt_addr != `ZERO, reg_we_mem,
         ~&{reg_we_ex, reg_write_addr_ex == rt_addr}};
+    // Signals go high when data needs to be forwarded from the execution stage
+    wire forward_rs_ex = &{rs_addr == reg_write_addr_ex, rs_addr != `ZERO, reg_we_ex};
     wire forward_rt_ex = &{rt_addr == reg_write_addr_ex, rt_addr != `ZERO, reg_we_ex};
 
     assign rs_data = forward_rs_mem ? reg_write_data_mem : 
@@ -210,8 +213,8 @@ module decode (
     // for immediate operations, use Imm
     // otherwise use rt
 
-    assign alu_op_y = (use_imm) ? imm : (isJal) ? 5'b10000 : rt_data;
-    assign reg_write_addr = (use_imm) ? rt_addr : rd_addr;
+    assign alu_op_y = (use_imm) ? imm : (isJal | isJalr) ? pc+8 : rt_data;
+    assign reg_write_addr = (use_imm) ? rt_addr : (isJal) ? 5'b11111 : rd_addr;
 
     // determine when to write back to a register (any operation that isn't an
     // unconditional store, non-linking branch, or non-linking jump)
@@ -235,7 +238,7 @@ module decode (
     assign mem_sc_id = (op == `SC);
 
     // 'atomic_id' is high when a load-linked has not been followed by a store.
-    assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id & atomic_ex) ? 1'b0 : 1'b1;
+    assign atomic_id = (op == `LL) ? atomic_ex : (mem_we & ~mem_sc_id & atomic_ex) ? 1'b0 : 1'b1;
 
     // 'mem_sc_mask_id' is high when a store conditional should not store
     assign mem_sc_mask_id = (mem_sc_id) ? ((atomic_id) ? 1'b0 : 1'b1) : 1'b0;
@@ -256,7 +259,7 @@ module decode (
                            isBLEZ & (~gtz | equalZero)};
 
     assign jump_target = isJ | isJal;
-    assign jump_reg = isJr;
+    assign jump_reg = isJr | isJalr;
     assign jr_pc = rs_data[31:0];
 
 endmodule

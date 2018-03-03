@@ -32,7 +32,7 @@ boot:
     nop
     nop
     lw      $t3, 0($t0)
-    xor     $t4, $t2, $t3
+    xor     $t4, $t2, $t3       # xor has to stall to wait for the data from the load 
     nop
     nop
     nop

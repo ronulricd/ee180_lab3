@@ -6,7 +6,8 @@
 #   MIPS gas, soft tab, 80 column
 #
 # Description:
-#   Test the functionality of the 'beq' instruction when branching backwards.
+#   Test the functionality of the 'beq' instruction when branching 
+#   to a forward address.
 #
 ###############################################################################
 
@@ -21,7 +22,6 @@ boot:
     ori     $s1, $0, 1          # Prepare the 'done' status
     ori     $t0, $0, 0xffff
     ori     $t1, $0, 0xffff
-    nop
     j       $check
     nop
 
@@ -34,8 +34,6 @@ $check:
     ori     $v0, $0, 0          # The test result starts as a failure
 
 $finish:
-    nop
-    nop
     sw      $v0, 4($s0)
     sw      $s1, 0($s0)
 

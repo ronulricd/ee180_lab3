@@ -9,16 +9,14 @@ Disassembly of section .text:
        4:	34110001 	li	s1,0x1
        8:	3408ffff 	li	t0,0xffff
        c:	3409ffff 	li	t1,0xffff
-      10:	00000000 	nop
-      14:	08000009 	j	24 <boot+0x24>
-      18:	00000000 	nop
-      1c:	0800000b 	j	2c <boot+0x2c>
-      20:	34020001 	li	v0,0x1
-      24:	1109fffd 	beq	t0,t1,1c <boot+0x1c>
-      28:	34020000 	li	v0,0x0
-	...
-      34:	ae020004 	sw	v0,4(s0)
-      38:	ae110000 	sw	s1,0(s0)
-      3c:	0800000f 	j	3c <boot+0x3c>
-      40:	00000000 	nop
+      10:	08000008 	j	20 <boot+0x20>
+      14:	00000000 	nop
+      18:	0800000a 	j	28 <boot+0x28>
+      1c:	34020001 	li	v0,0x1
+      20:	1109fffd 	beq	t0,t1,18 <boot+0x18>
+      24:	34020000 	li	v0,0x0
+      28:	ae020004 	sw	v0,4(s0)
+      2c:	ae110000 	sw	s1,0(s0)
+      30:	0800000c 	j	30 <boot+0x30>
+      34:	00000000 	nop
 	...
