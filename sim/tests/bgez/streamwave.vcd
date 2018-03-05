@@ -1,5 +1,9 @@
 $date
+<<<<<<< HEAD
 	Sun Mar  4 16:41:08 2018
+=======
+	Sun Mar  4 14:29:11 2018
+>>>>>>> db9bbb364056d3db8a52bea5640ad23d5dd58a9d
 $end
 $version
 	Icarus Verilog

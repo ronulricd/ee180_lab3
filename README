@@ -1,7 +1,13 @@
+*************************
 Lab 3 Report
+EE180
+Group 13
 Ron Domingo (rdomingo) and Michael Lu (mingci7)
+*************************
 
+*************************
 Instructions Implemented:
+*************************
 add
 addi
 addiu
@@ -47,8 +53,10 @@ sw
 xor
 xori
 
-Control and Datapath Modifications
-In order to handle forwarding and stalling we first had to identify the stages in our processor that produced and consumed data. With our five-stage pipeline, the two stages that both produce and consume new values are the execute and memory stages. Using this knowledge, we created two forwarding signals for each $rs and $rt. The signals and their conditions are listed below:
+**********************************
+Datapath Modifications
+**********************************
+In order to handle forwarding we first had to identify the stages in our processor that produced and consumed data. With our five-stage pipeline, the two stages that both produce and consume new values are the execute and memory stages. Using this knowledge, we created two forwarding signals for each $rs and $rt. The signals and their conditions are listed below:
 
 forward_rs_mem: Signal goes high when data for the rs field of the instruction needs to be forwarded from the memory stage of a previous instruction. More specifically, the signal goes high if the $rs address of the current instruction is the same as the register write address of a previous instruction AND the $rs address is not zero AND the previous instruction is writing to that register address AND the instruction immediately before the current instruction is not also writing to the same register. 
 
@@ -67,3 +75,49 @@ Similarly, the rt_data for the current instruction is set to these values:
     If forward_rt_ex is high -> the output of the preceding instruction's ALU output 
     If forward_rt_mem is high -> the value that was just pulled from the memory stage of a previous instruction
     If no forwarding -> the value of rt that was read from the registers
+
+For stalling, we knew that retrieving data from the memory stage is where we had to look to identify stalling cases. So we created two signals that dictated whether we would enounter memory dependencies for a current instruction. The two signals and their conditions are listed below:
+
+rs_mem_dependency: This signal goes high when the current instruction will require the data from memory that has yet to be retrieved by previous instructions. Specifically, this signal goes high when the current rs address is the same as the register write address of the previous instruction AND the previous instruction has to read from memory to retrieve that data AND the address is not zero. 
+
+rt_mem_dependency: This signal is the same as the signal above, however, it looks at the address of the rt register.
+
+In the case of forwarding in the writeback stage, the forwarding functionality was already implemented and so we did not make any further modifications. 
+
+**********************************
+Control Path Modifications
+**********************************
+In order to change the control path of our processor we used various signals in the decode stage of the processor to dictate what updates need to happen to the PC two instructions after the jump or branch instruction occur (since we have a one cycle jump/branch delay). The helper signals we have implemented specifically in the decode stage are listed below:
+
+isEqual: This signal goes high if the values in the rs and rt data fields are equal. Used for branching instructions, specifically BEQ and BNE.
+
+gtz: This signal goes high if the signed value in the rs field is greater than 0. Used for branching instructions BGTZ, BLTZNL, BGENZL, BLEZ.
+
+equalZero: Goes high when the value of in the rs field is equal to 0. Used for the BGEZNL and BLEZ instructions.
+
+These next signals are passed outside of the decode stage to indicate to the instruction fetch stage what actions need to be taken in the case that a chang ein the PC needs to occur. 
+
+jump_branch: This signal goes high whenever there is a branch instructon and its corresponding (in)equality is met. This tells the instruction fetch stage to change the PC to the immediate value of the branch instruction.
+
+jump_target: This signal goes high whenever a J or JAL instruction is found, telling the instruction fetch to use the lower 26 bits of the jump instruction as its next PC value.
+
+jump_reg: A signal to indicate that a JR or JALR instruction has been found. Along with its accompanying variable jr_pc, which stores the jump address value read from the registers, this signal, when high, sets the PC equal to the value stored in jr_pc. 
+
+*******************************
+Forwarding and Stalling Testing
+*******************************
+With the forwarding and stalling modifications we were able to stress test our processor through various test cases in addition to removing all of the unnecessary nops from the other instruction tests: 
+
+double_data_hazard: Tests the case of a double data hazard 
+
+fwd_id(rs/rt)_ex: Tests that forwarding occurs for the rs/rt field from the execution stage of the previous instruction the to the decode stage of the current instruction
+
+fwd_id(rs/rt)_mem: Tests that forwarding occurs for the rs/rt field from the memory stage of the previous instruction the to the decode stage of the current instruction. In order to forward from the memory stage, we inserted a nop between two arithmetic instructions that makes it so that the previous arithmetic instruction is in its memory stage when the current instruction is in the decode stage. 
+
+fwd_id(rs/rt)_wb: Tests that forwarding occurs for the rs/rt field from the write back stage of the previous instruction the to the decode stage of the current instruction. In order to forward from the memory stage, we inserted two nops between two arithmetic instructions that makes it so that the previous arithmetic instruction is in its write back stage when the current instruction is in the decode stage. 
+
+load_use_hazard: Tests the case of a load use data hazard 
+
+branch_data_hazard_1cycle: Tests the case of a branch that requires one stall before evaluating its inequality. Or more specifically, if a comparison register is a destination of preceding ALU instruction or 2nd preceding load instruction.
+
+branch_data_hazard_2cycle: Tests that branches can delay two cycles before evaluating its inequality when a comparison register is a destination of immediately preceding load instruction.
