@@ -22,6 +22,7 @@ boot:
     ori     $s1, $0, 1          # Prepare the 'done' status
     lui     $t0, 0              # Load some valid address 0x00003210 to register $t0
     ori     $t0, $t0, 0x3210
+    sw      $s1, 0($t0)
     ll      $t1, 0($t0)         # Loads from result and links so that sc can check later
     ori     $t2, $t2, 0
     sw      $t2, 0($t0)
