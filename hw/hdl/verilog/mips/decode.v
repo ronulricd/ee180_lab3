@@ -190,7 +190,8 @@ module decode (
     wire rt_mem_dependency = &{rt_addr == reg_write_addr_ex, mem_read_ex, rt_addr != `ZERO};
 
     wire isLUI = op == `LUI;
-    wire read_from_rs = ~|{isLUI, jump_target, isShiftImm};
+    wire isSC = op == `SC;
+    wire read_from_rs = ~|{isLUI, isSC, jump_target, isShiftImm};
 
     wire isALUImm = |{op == `ADDI, op == `ADDIU, op == `SLTI, op == `SLTIU, op == `ANDI, op == `ORI, op == `XORI};
     wire read_from_rt = ~|{isLUI, jump_target, isALUImm, mem_read};
@@ -238,7 +239,7 @@ module decode (
     assign mem_sc_id = (op == `SC);
 
     // 'atomic_id' is high when a load-linked has not been followed by a store.
-    assign atomic_id = (op == `LL) ? 1'b1 : (mem_we & ~mem_sc_id & atomic_ex) ? 1'b0 : 1'b1;
+    assign atomic_id = (op == `LL) ? 1'b1 : &{mem_we, ~mem_sc_id, atomic_ex} ? 1'b0 : 1'b1;
 
     // 'mem_sc_mask_id' is high when a store conditional should not store
     assign mem_sc_mask_id = (mem_sc_id) ? ((atomic_id) ? 1'b0 : 1'b1) : 1'b0;
