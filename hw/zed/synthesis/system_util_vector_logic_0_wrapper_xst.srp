@@ -5,7 +5,7 @@ Parameter TMPDIR set to /afs/.ir.stanford.edu/users/r/d/rdomingo/ee180/3lab/hw/z
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> 
 
@@ -242,7 +242,7 @@ Cross Clock Domains Report:
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.03 secs
+Total CPU time to Xst completion: 9.02 secs
  
 --> 
 

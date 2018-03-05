@@ -18,12 +18,12 @@
 ############################################################################
 # Clock constraints                                                        #
 ############################################################################
+create_clock -name clk_fpga_3 -period "20" [get_nets "FCLK_CLK3"]
+set_input_jitter clk_fpga_3 0.6
 create_clock -name clk_fpga_0 -period "10" [get_nets "FCLK_CLK0"]
 set_input_jitter clk_fpga_0 0.3
 create_clock -name clk_fpga_1 -period "6.999" [get_nets "FCLK_CLK1"]
 set_input_jitter clk_fpga_1 0.20997
-create_clock -name clk_fpga_3 -period "20" [get_nets "FCLK_CLK3"]
-set_input_jitter clk_fpga_3 0.6
 create_clock -name clk_fpga_2 -period "5" [get_nets "FCLK_CLK2"]
 set_input_jitter clk_fpga_2 0.15
 

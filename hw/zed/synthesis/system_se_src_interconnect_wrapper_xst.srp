@@ -2399,8 +2399,8 @@ se_src_interconnect/si_converter_bank/gen_conv_slot[0].clock_conv_inst/S_AXI_ACL
 =========================================================================
 
 
-Total REAL time to Xst completion: 388.00 secs
-Total CPU time to Xst completion: 306.95 secs
+Total REAL time to Xst completion: 391.00 secs
+Total CPU time to Xst completion: 307.21 secs
  
 --> 
 

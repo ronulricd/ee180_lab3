@@ -875,13 +875,13 @@ Unit <dffare_2> synthesized.
 
 Synthesizing Unit <decode>.
     Related source file is "/afs/.ir.stanford.edu/users/r/d/rdomingo/ee180/3lab/hw/zed/pcores/stream_engine_v1_00_a/hdl/verilog/mips/decode.v".
-    Found 32-bit adder for signal <pc[31]_GND_34_o_add_135_OUT> created at line 214.
-    Found 5-bit comparator equal for signal <rs_addr[4]_reg_write_addr_mem[4]_equal_96_o> created at line 175
-    Found 5-bit comparator equal for signal <reg_write_addr_ex[4]_rs_addr[4]_equal_98_o> created at line 176
-    Found 5-bit comparator equal for signal <rt_addr[4]_reg_write_addr_mem[4]_equal_104_o> created at line 178
-    Found 5-bit comparator equal for signal <reg_write_addr_ex[4]_rt_addr[4]_equal_106_o> created at line 179
-    Found 32-bit comparator equal for signal <isEqual> created at line 248
-    Found 32-bit comparator greater for signal <gtz> created at line 249
+    Found 32-bit adder for signal <pc[31]_GND_34_o_add_135_OUT> created at line 216.
+    Found 5-bit comparator equal for signal <rs_addr[4]_reg_write_addr_mem[4]_equal_96_o> created at line 176
+    Found 5-bit comparator equal for signal <reg_write_addr_ex[4]_rs_addr[4]_equal_98_o> created at line 177
+    Found 5-bit comparator equal for signal <rt_addr[4]_reg_write_addr_mem[4]_equal_101_o> created at line 178
+    Found 5-bit comparator equal for signal <reg_write_addr_ex[4]_rt_addr[4]_equal_103_o> created at line 179
+    Found 32-bit comparator equal for signal <isEqual> created at line 250
+    Found 32-bit comparator greater for signal <gtz> created at line 251
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   6 Comparator(s).
@@ -1369,15 +1369,15 @@ Top Level Output File Name         : system_stream_engine_0_wrapper.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 2510
+# BELS                             : 2509
 #      GND                         : 1
 #      INV                         : 6
 #      LUT1                        : 71
 #      LUT2                        : 160
 #      LUT3                        : 269
 #      LUT4                        : 167
-#      LUT5                        : 385
-#      LUT6                        : 799
+#      LUT5                        : 389
+#      LUT6                        : 794
 #      MUXCY                       : 267
 #      MUXF7                       : 123
 #      MUXF8                       : 32
@@ -1406,16 +1406,16 @@ Selected Device : 7z020clg484-1
 
 Slice Logic Utilization: 
  Number of Slice Registers:             726  out of  106400     0%  
- Number of Slice LUTs:                 1905  out of  53200     3%  
-    Number used as Logic:              1857  out of  53200     3%  
+ Number of Slice LUTs:                 1904  out of  53200     3%  
+    Number used as Logic:              1856  out of  53200     3%  
     Number used as Memory:               48  out of  17400     0%  
        Number used as RAM:               48
 
 Slice Logic Distribution: 
  Number of LUT Flip Flop pairs used:   2273
    Number with an unused Flip Flop:    1547  out of   2273    68%  
-   Number with an unused LUT:           368  out of   2273    16%  
-   Number of fully used LUT-FF pairs:   358  out of   2273    15%  
+   Number with an unused LUT:           369  out of   2273    16%  
+   Number of fully used LUT-FF pairs:   357  out of   2273    15%  
    Number of unique control sets:        24
 
 IO Utilization: 
@@ -1473,7 +1473,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ACLK'
   Clock period: 13.126ns (frequency: 76.184MHz)
-  Total number of paths / destination ports: 6275493050 / 2167
+  Total number of paths / destination ports: 6275493175 / 2167
 -------------------------------------------------------------------------
 Delay:               13.126ns (Levels of Logic = 40)
   Source:            stream_engine_0/stream_engine_i/ul/cpu/alu_op_y_id2ex/q_12 (FF)
@@ -1490,7 +1490,7 @@ Delay:               13.126ns (Levels of Logic = 40)
      DSP48E1:PCIN47->PCOUT47    1   1.713   0.000  stream_engine_0/stream_engine_i/ul/cpu/x_stage/Mmult_n00401 (stream_engine_0/stream_engine_i/ul/cpu/x_stage/Mmult_n00401_PCOUT_to_Mmult_n00402_PCIN_47)
      DSP48E1:PCIN47->P1    5   1.518   0.440  stream_engine_0/stream_engine_i/ul/cpu/x_stage/Mmult_n00402 (stream_engine_0/stream_engine_i/ul/cpu/x_stage/n0040<18>)
      LUT5:I4->O            5   0.053   0.752  stream_engine_0/stream_engine_i/ul/cpu/d_stage/Mmux_rs_data10 (stream_engine_0/stream_engine_i/ul/cpu/jr_pc_id<18>)
-     LUT5:I0->O            1   0.053   0.485  stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero<31>6_SW0 (N363)
+     LUT5:I0->O            1   0.053   0.485  stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero<31>6_SW0 (N353)
      LUT6:I4->O            2   0.053   0.491  stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero<31>7 (stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero)
      LUT5:I3->O            1   0.053   0.485  stream_engine_0/stream_engine_i/ul/cpu/d_stage/out94 (stream_engine_0/stream_engine_i/ul/cpu/d_stage/out95)
      LUT6:I4->O           48   0.053   0.569  stream_engine_0/stream_engine_i/ul/cpu/d_stage/out95 (stream_engine_0/stream_engine_i/ul/cpu/jump_branch_id)
@@ -1621,12 +1621,12 @@ ACLK           |   13.126|         |         |         |
 
 
 Total REAL time to Xst completion: 42.00 secs
-Total CPU time to Xst completion: 40.53 secs
+Total CPU time to Xst completion: 40.47 secs
  
 --> 
 
 
-Total memory usage is 244236 kilobytes
+Total memory usage is 243804 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   31 (   0 filtered)

@@ -5,7 +5,7 @@ Loading device for application Rf_Device from file '7z020.nph' in environment
    "system" is an NCD, version 3.2, device xc7z020, package clg484, speed -1
 Opened constraints file system.pcf.
 
-Sat Mar  3 15:28:29 2018
+Sun Mar  4 17:56:47 2018
 
 /afs/ir.stanford.edu/class/ee/xilinx/14.7/ISE_DS/ISE/bin/lin/unwrapped/bitgen -w system.ncd 
 
@@ -99,24 +99,20 @@ WARNING:PhysDesignRules:367 - The signal <int_1_pin_IBUF> is incomplete. The
 WARNING:PhysDesignRules:367 - The signal <int_3_pin_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
-   <axi_i2s_adi_0/axi_i2s_adi_0/ctrl/rx_sync_fifo_in<3>> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
    <axi_i2s_adi_0/axi_i2s_adi_0/ctrl/rx_gen.rx_sync/Mram_fifo_RAMD_D1_O> is
    incomplete. The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
+   <axi_i2s_adi_0/axi_i2s_adi_0/ctrl/rx_sync_fifo_in<3>> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
    <axi_i2s_adi_0/axi_i2s_adi_0/ctrl/tx_sync/Mram_fifo_RAMD_D1_O> is incomplete.
    The signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
-   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_rx_gen.rx_fifo/fifo/Mram_data_fifo3_RA
-   MD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
 WARNING:PhysDesignRules:367 - The signal
    <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_rx_gen.rx_fifo/fifo/Mram_data_fifo2_RA
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
-   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_rx_gen.rx_fifo/fifo/Mram_data_fifo4_RA
+   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_rx_gen.rx_fifo/fifo/Mram_data_fifo3_RA
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
@@ -128,11 +124,11 @@ WARNING:PhysDesignRules:367 - The signal
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
-   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_tx_gen.tx_fifo/fifo/Mram_data_fifo4_RA
+   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_tx_gen.tx_fifo/fifo/Mram_data_fifo2_RA
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
-   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_tx_gen.tx_fifo/fifo/Mram_data_fifo2_RA
+   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_rx_gen.rx_fifo/fifo/Mram_data_fifo4_RA
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
@@ -140,6 +136,10 @@ WARNING:PhysDesignRules:367 - The signal
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
+   <axi_i2s_adi_0/axi_i2s_adi_0/pl330_dma_tx_gen.tx_fifo/fifo/Mram_data_fifo4_RA
+   MD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
    <se_src_interconnect/se_src_interconnect/mi_protocol_conv_bank/gen_protocol_s
    lot[0].gen_prot_conv.conv_inst/gen_axi3.axi3_conv_inst/USE_WRITE.write_addr_i
    nst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/U0/xst_fifo_generator/gconvfifo.r
@@ -152,70 +152,42 @@ WARNING:PhysDesignRules:367 - The signal
    ifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm/Mram_RAM_RAMD_D1_O> is incomplete.
    The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
-   <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo3_RAMD_D
-   1_O> is incomplete. The signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
    <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo5_RAMD_D
-   1_O> is incomplete. The signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
-   <se_dst_interconnect/se_dst_interconnect/mi_protocol_conv_bank/gen_protocol_s
-   lot[0].gen_prot_conv.conv_inst/gen_axi3.axi3_conv_inst/USE_WRITE.write_addr_i
-   nst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/U0/xst_fifo_generator/gconvfifo.r
-   f/grf.rf/gntv_or_sync_fifo.mem/gdm.dm/Mram_RAM_RAMD_D1_O> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal
-   <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo2_RAMD_D
    1_O> is incomplete. The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
    <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo4_RAMD_D
    1_O> is incomplete. The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
+   <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo2_RAMD_D
+   1_O> is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo3_RAMD_D
+   1_O> is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo1_RAMD_D
+   1_O> is incomplete. The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <se_dst_interconnect/se_dst_interconnect/mi_protocol_conv_bank/gen_protocol_s
+   lot[0].gen_prot_conv.conv_inst/gen_axi3.axi3_conv_inst/USE_WRITE.write_addr_i
+   nst/USE_BURSTS.cmd_queue/inst/fifo_gen_inst/U0/xst_fifo_generator/gconvfifo.r
+   f/grf.rf/gntv_or_sync_fifo.mem/gdm.dm/Mram_RAM_RAMD_D1_O> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
    <se_dst_interconnect/se_dst_interconnect/mi_protocol_conv_bank/gen_protocol_s
    lot[0].gen_prot_conv.conv_inst/gen_axi3.axi3_conv_inst/USE_WRITE.write_addr_i
    nst/USE_B_CHANNEL.cmd_b_queue/inst/fifo_gen_inst/U0/xst_fifo_generator/gconvf
    ifo.rf/grf.rf/gntv_or_sync_fifo.mem/gdm.dm/Mram_RAM_RAMD_D1_O> is incomplete.
    The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal
-   <axi_spdif_tx_0/axi_spdif_tx_0/pl330_dma_gen.fifo/fifo/Mram_data_fifo1_RAMD_D
-   1_O> is incomplete. The signal does not drive any load pins in the design.
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs13_R
+   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
 WARNING:PhysDesignRules:367 - The signal
    <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs12_R
    AMD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs2_RA
-   MD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs11_R
-   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
    <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs3_RA
-   MD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs13_R
-   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs4_RA
-   MD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs14_R
-   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs5_RA
-   MD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs15_R
-   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
-   design.
-WARNING:PhysDesignRules:367 - The signal
-   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs6_RA
    MD_D1_O> is incomplete. The signal does not drive any load pins in the
    design.
 WARNING:PhysDesignRules:367 - The signal
@@ -230,6 +202,34 @@ WARNING:PhysDesignRules:367 - The signal
    _S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv
    _or_sync_fifo.mem/gdm.dm/Mram_RAM2_RAMD_D1_O> is incomplete. The signal does
    not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs4_RA
+   MD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs2_RA
+   MD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs11_R
+   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs15_R
+   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs5_RA
+   MD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs6_RA
+   MD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
+WARNING:PhysDesignRules:367 - The signal
+   <stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/w_stage/Mram_regs14_R
+   AMD_D1_O> is incomplete. The signal does not drive any load pins in the
+   design.
 DRC detected 0 errors and 36 warnings.  Please see the previously displayed
 individual error or warning messages for more details.
 INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.

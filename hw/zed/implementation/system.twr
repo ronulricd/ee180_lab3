@@ -56,13 +56,22 @@ Timing constraint: PATH "TS_gp_interconnect_reset_resync_path" TIG;
 --------------------------------------------------------------------------------
 
 ================================================================================
+Timing constraint: TS_clk_fpga_3 = PERIOD TIMEGRP "clk_fpga_3" 50 MHz HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 8458371217 paths analyzed, 29647 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  19.979ns.
+--------------------------------------------------------------------------------
+
+================================================================================
 Timing constraint: TS_clk_fpga_0 = PERIOD TIMEGRP "clk_fpga_0" 100 MHz HIGH 
 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
  37671 paths analyzed, 6172 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   9.497ns.
+ Minimum period is   9.308ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -72,15 +81,6 @@ For more information, see Period Analysis in the Timing Closure User Guide (UG61
 
  0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 component switching limit errors)
---------------------------------------------------------------------------------
-
-================================================================================
-Timing constraint: TS_clk_fpga_3 = PERIOD TIMEGRP "clk_fpga_3" 50 MHz HIGH 50%;
-For more information, see Period Analysis in the Timing Closure User Guide (UG612).
-
- 8458371032 paths analyzed, 29652 endpoints analyzed, 0 failing endpoints
- 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is  19.985ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -101,7 +101,7 @@ For more information, see Period Analysis in the Timing Closure User Guide (UG61
 
  57 paths analyzed, 45 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   2.781ns.
+ Minimum period is   2.966ns.
 --------------------------------------------------------------------------------
 
 
@@ -112,8 +112,8 @@ Derived Constraints for TS_clk_fpga_2
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_clk_fpga_2                  |      5.000ns|      2.800ns|      0.171ns|            0|            0|            0|           57|
-| TS_clock_generator_0_clock_gen|     81.379ns|      2.781ns|          N/A|            0|            0|           57|            0|
+|TS_clk_fpga_2                  |      5.000ns|      2.800ns|      0.182ns|            0|            0|            0|           57|
+| TS_clock_generator_0_clock_gen|     81.379ns|      2.966ns|          N/A|            0|            0|           57|            0|
 | erator_0_SIG_MMCM1_CLKOUT0    |             |             |             |             |             |             |             |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
@@ -131,20 +131,20 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 8458408768 paths, 0 nets, and 46562 connections
+Constraints cover 8458408953 paths, 0 nets, and 46539 connections
 
 Design statistics:
-   Minimum period:  19.985ns   (Maximum frequency:  50.038MHz)
+   Minimum period:  19.979ns   (Maximum frequency:  50.053MHz)
 
 
-Analysis completed Sat Mar  3 15:28:08 2018 
+Analysis completed Sun Mar  4 17:56:25 2018 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 514 MB
+Peak Memory Usage: 513 MB
 
 
 

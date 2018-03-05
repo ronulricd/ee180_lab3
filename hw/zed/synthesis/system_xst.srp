@@ -1160,15 +1160,15 @@ Top Level Output File Name         : system.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 10070
+# BELS                             : 10069
 #      GND                         : 28
 #      INV                         : 212
 #      LUT1                        : 164
 #      LUT2                        : 681
 #      LUT3                        : 1442
 #      LUT4                        : 1222
-#      LUT5                        : 1601
-#      LUT6                        : 2777
+#      LUT5                        : 1605
+#      LUT6                        : 2772
 #      MUXCY                       : 867
 #      MUXCY_L                     : 55
 #      MUXF7                       : 202
@@ -1215,17 +1215,17 @@ Selected Device : 7z020clg484-1
 
 Slice Logic Utilization: 
  Number of Slice Registers:            6330  out of  106400     5%  
- Number of Slice LUTs:                 8560  out of  53200    16%  
-    Number used as Logic:              8099  out of  53200    15%  
+ Number of Slice LUTs:                 8559  out of  53200    16%  
+    Number used as Logic:              8098  out of  53200    15%  
     Number used as Memory:              461  out of  17400     2%  
        Number used as RAM:              144
        Number used as SRL:              317
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:  11864
-   Number with an unused Flip Flop:    5534  out of  11864    46%  
-   Number with an unused LUT:          3304  out of  11864    27%  
-   Number of fully used LUT-FF pairs:  3026  out of  11864    25%  
+ Number of LUT Flip Flop pairs used:  11863
+   Number with an unused Flip Flop:    5533  out of  11863    46%  
+   Number with an unused LUT:          3304  out of  11863    27%  
+   Number of fully used LUT-FF pairs:  3026  out of  11863    25%  
    Number of unique control sets:       475
 
 IO Utilization: 
@@ -1275,14 +1275,14 @@ Control Signal                                                                  
  | Load  |
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --+-------+
-stream_engine_0/M_AXIS_TKEEP<0>(stream_engine_0/XST_VCC:P)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | NONE(stream_engine_0/stream_engine_0/stream_engine_i/buf_1_lo/Mram_ram4)                                                                                                                                                                                                                                                                                                            
+stream_engine_0/M_AXIS_TKEEP<0>(stream_engine_0/XST_VCC:P)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | NONE(stream_engine_0/stream_engine_0/stream_engine_i/buf_0_lo/Mram_mem16)                                                                                                                                                                                                                                                                                                           
  | 10416 |
-stream_engine_0/S_AXI_BRESP<0>(stream_engine_0/XST_GND:G)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | NONE(stream_engine_0/stream_engine_0/stream_engine_i/buf_1_lo/Mram_ram4)                                                                                                                                                                                                                                                                                                            
+stream_engine_0/S_AXI_BRESP<0>(stream_engine_0/XST_GND:G)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | NONE(stream_engine_0/stream_engine_0/stream_engine_i/buf_0_lo/Mram_mem16)                                                                                                                                                                                                                                                                                                           
  | 6048  |
-axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/DBITERR(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/XST_GND:G)                | NONE(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram)      
+axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/DBITERR(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/XST_GND:G)                | NONE(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_MM2S_FULL.I_MM2S_FULL_WRAPPER/GEN_INCLUDE_MM2S_SF.I_RD_SF/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram)      
  | 8     |
 axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/DBITERR(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/XST_GND:G)|
-NONE(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram)| 8     |
+NONE(axi_dma_stream/axi_dma_stream/I_PRMRY_DATAMOVER/GEN_S2MM_FULL.I_S2MM_FULL_WRAPPER/GEN_ENABLE_INDET_BTT_SF.I_INDET_BTT/I_DATA_FIFO/V6.I_SYNC_FIFOGEN_FIFO/V6_S6_AND_LATER.I_SYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmgb.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v6_noinit.ram/SDP.SIMPLE_PRIM36.ram)| 8     |
 se_dst_interconnect/se_dst_interconnect/si_data_fifo_bank/gen_fifo_slot[0].data_fifo_inst/gen_fifo.fifo_gen_inst/U0/xst_fifo_generator/gaxi_full_lite.gwrite_ch.gwdch2.axi_wdch/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/DBITERR(se_dst_interconnect/se_dst_interconnect/si_data_fifo_bank/gen_fifo_slot[0].data_fifo_inst/gen_fifo.fifo_gen_inst/U0/xst_fifo_generator/gaxi_full_lite.gwrite_ch.gwdch2.axi_wdch/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/XST_GND:G)                                                                                          | NONE(se_dst_interconnect/se_dst_interconnect/si_data_fifo_bank/gen_fifo_slot[0].data_fifo_inst/gen_fifo.fifo_gen_inst/U0/xst_fifo_generator/gaxi_full_lite.gwrite_ch.gwdch2.axi_wdch/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v6_noinit.ram/SDP.WIDE_PRIM36.ram)                                             
  | 2     |
 se_src_interconnect/se_src_interconnect/si_data_fifo_bank/gen_fifo_slot[0].data_fifo_inst/gen_fifo.fifo_gen_inst/U0/xst_fifo_generator/gaxi_full_lite.gread_ch.grdch2.axi_rdch/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/DBITERR(se_src_interconnect/se_src_interconnect/si_data_fifo_bank/gen_fifo_slot[0].data_fifo_inst/gen_fifo.fifo_gen_inst/U0/xst_fifo_generator/gaxi_full_lite.gread_ch.grdch2.axi_rdch/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/XST_GND:G)                                                                                            | NONE(se_src_interconnect/se_src_interconnect/si_data_fifo_bank/gen_fifo_slot[0].data_fifo_inst/gen_fifo.fifo_gen_inst/U0/xst_fifo_generator/gaxi_full_lite.gread_ch.grdch2.axi_rdch/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v6_noinit.ram/SDP.WIDE_PRIM36.ram)                                              
@@ -1357,7 +1357,7 @@ Delay:               1.463ns (Levels of Logic = 1)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'processing_system7_0/processing_system7_0/FCLK_CLK_unbuffered<3>'
   Clock period: 12.883ns (frequency: 77.621MHz)
-  Total number of paths / destination ports: 3212768816 / 14851
+  Total number of paths / destination ports: 3212768941 / 14851
 -------------------------------------------------------------------------
 Delay:               12.883ns (Levels of Logic = 40)
   Source:            stream_engine_0/stream_engine_0/stream_engine_i/ul/cpu/alu_op_x_id2ex/q_16 (FF)
@@ -1374,7 +1374,7 @@ Delay:               12.883ns (Levels of Logic = 40)
      DSP48E1:PCIN47->PCOUT47    1   1.713   0.000  stream_engine_0/stream_engine_i/ul/cpu/x_stage/Mmult_n00401 (stream_engine_0/stream_engine_i/ul/cpu/x_stage/Mmult_n00401_PCOUT_to_Mmult_n00402_PCIN_47)
      DSP48E1:PCIN47->P1    5   1.518   0.440  stream_engine_0/stream_engine_i/ul/cpu/x_stage/Mmult_n00402 (stream_engine_0/stream_engine_i/ul/cpu/x_stage/n0040<18>)
      LUT5:I4->O            5   0.053   0.752  stream_engine_0/stream_engine_i/ul/cpu/d_stage/Mmux_rs_data10 (stream_engine_0/stream_engine_i/ul/cpu/jr_pc_id<18>)
-     LUT5:I0->O            1   0.053   0.485  stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero<31>6_SW0 (N363)
+     LUT5:I0->O            1   0.053   0.485  stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero<31>6_SW0 (N353)
      LUT6:I4->O            2   0.053   0.491  stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero<31>7 (stream_engine_0/stream_engine_i/ul/cpu/d_stage/equalZero)
      LUT5:I3->O            1   0.053   0.485  stream_engine_0/stream_engine_i/ul/cpu/d_stage/out94 (stream_engine_0/stream_engine_i/ul/cpu/d_stage/out95)
      LUT6:I4->O           48   0.053   0.569  stream_engine_0/stream_engine_i/ul/cpu/d_stage/out95 (stream_engine_0/stream_engine_i/ul/cpu/jump_branch_id)
@@ -1551,7 +1551,7 @@ Offset:              3.270ns (Levels of Logic = 6)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDE:C->Q             16   0.282   0.823  stream_engine_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg (stream_engine_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg)
-     LUT5:I0->O            1   0.053   0.485  stream_engine_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/wr_done_SW1 (N470)
+     LUT5:I0->O            1   0.053   0.485  stream_engine_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/wr_done_SW1 (N460)
      LUT6:I4->O            7   0.053   0.642  stream_engine_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/wr_done (S_AXI_AWREADY)
      end scope: 'stream_engine_0:S_AXI_WREADY'
      begin scope: 'se_control_interconnect:M_AXI_WREADY<1>'
@@ -1630,13 +1630,13 @@ processing_system7_0/processing_system7_0/FCLK_CLK_unbuffered<3>|         |     
 =========================================================================
 
 
-Total REAL time to Xst completion: 53.00 secs
-Total CPU time to Xst completion: 52.02 secs
+Total REAL time to Xst completion: 52.00 secs
+Total CPU time to Xst completion: 51.95 secs
  
 --> 
 
 
-Total memory usage is 246028 kilobytes
+Total memory usage is 246096 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   31 (   0 filtered)
