@@ -1,13 +1,13 @@
 ###############################################################################
-# File         : llsc_no_stores.S
+# File         : llsc_stores.S
 # Project      : EE180 Lab 2: MIPS
 #
 # Standards/Formatting:
 #   MIPS gas, soft tab, 80 column
 #
 # Description:
-#   Test the functionality of the 'll' and 'sc' instructions without any
-#   any other store instructions between ll and sc.
+#   Test the functionality of the 'll' and 'sc' instructions with
+#   some store instruction between the two.
 #
 ###############################################################################
 

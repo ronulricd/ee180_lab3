@@ -20,11 +20,9 @@ boot:
     ori     $s1, $0, 1          # Prepare the 'done' status
     ori     $t0, $0, 0x000f
     ori     $t1, $0, 0xfff0
-    nop
+    nop                         # This nop needs to be here so that the data is forwarded two instructions down instead of one (from the mem stage to the id stage)                        
     or      $t2, $t0, $t1
-    nop
     xori    $t3, $t2, 0xfffe
-    nop
     sw      $t3, 4($s0)         # Set the test result
     sw      $s1, 0($s0)         # Set 'done'
 

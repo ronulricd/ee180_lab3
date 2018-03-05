@@ -7,7 +7,8 @@
 #
 # Description:
 #   Test the functionality of the 'add' instruction in the case of 
-#   positive overflow.
+#   positive overflow. Ensures that the overflow bit gets turned on 
+#   in this case.
 #
 ###############################################################################
 
