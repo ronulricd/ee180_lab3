@@ -25,8 +25,6 @@ boot:
     ll      $t1, 0($t0)         # Loads from result and links so that sc can check later
     addiu   $t1, $t1, 10
     sc      $t1, 0($t0)
-    nop
-    nop
     sw      $t1, 4($s0)         # Set the test result
     sw      $s1, 0($s0)         # Set 'done'
 

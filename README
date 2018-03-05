@@ -78,9 +78,9 @@ Similarly, the rt_data for the current instruction is set to these values:
 
 For stalling, we knew that retrieving data from the memory stage is where we had to look to identify stalling cases. So we created two signals that dictated whether we would enounter memory dependencies for a current instruction. The two signals and their conditions are listed below:
 
-rs_mem_dependency: This signal goes high when the current instruction will require the data from memory that has yet to be retrieved by previous instructions. Specifically, this signal goes high when the current rs address is the same as the register write address of the previous instruction AND the previous instruction has to read from memory to retrieve that data AND the address is not zero. 
+rs_mem_dependency: This signal goes high when the current instruction will require the data from memory that has yet to be retrieved by previous instructions. Specifically, this signal goes high when the current rs address is the same as the register write address of the previous instruction AND (the previous instruction has to read from memory to retrieve that data OR the previous instruction was a SC, in which case it has to stall because the sc will modify the register value) AND the address is not zero. 
 
-rt_mem_dependency: This signal is the same as the signal above, however, it looks at the address of the rt register.
+rt_mem_dependency: This signal is the same as the signal above, however, it looks at the address of the rt register. 
 
 In the case of forwarding in the writeback stage, the forwarding functionality was already implemented and so we did not make any further modifications. 
 

@@ -41,6 +41,7 @@ module decode (
     input [4:0] reg_write_addr_ex,
     input [31:0] alu_result_ex,
     input mem_read_ex,
+    input mem_sc_ex,
 
     input reg_we_mem,
     input [4:0] reg_write_addr_mem,
@@ -186,8 +187,8 @@ module decode (
     assign rt_data = forward_rt_mem ? reg_write_data_mem : 
         forward_rt_ex ? alu_result_ex : rt_data_in;
 
-    wire rs_mem_dependency = &{rs_addr == reg_write_addr_ex, mem_read_ex, rs_addr != `ZERO};
-    wire rt_mem_dependency = &{rt_addr == reg_write_addr_ex, mem_read_ex, rt_addr != `ZERO};
+    wire rs_mem_dependency = &{rs_addr == reg_write_addr_ex, (mem_read_ex | mem_sc_ex), rs_addr != `ZERO};
+    wire rt_mem_dependency = &{rt_addr == reg_write_addr_ex, (mem_read_ex | mem_sc_ex), rt_addr != `ZERO};
 
     wire isLUI = op == `LUI;
     wire isSC = op == `SC;

@@ -12,9 +12,8 @@ Disassembly of section .text:
       10:	c1090000 	ll	t1,0(t0)
       14:	2529000a 	addiu	t1,t1,10
       18:	e1090000 	sc	t1,0(t0)
-	...
-      24:	ae090004 	sw	t1,4(s0)
-      28:	ae110000 	sw	s1,0(s0)
-      2c:	0800000b 	j	2c <boot+0x2c>
-      30:	00000000 	nop
+      1c:	ae090004 	sw	t1,4(s0)
+      20:	ae110000 	sw	s1,0(s0)
+      24:	08000009 	j	24 <boot+0x24>
+      28:	00000000 	nop
 	...

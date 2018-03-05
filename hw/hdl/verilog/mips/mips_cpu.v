@@ -110,6 +110,7 @@ module mips_cpu (
         .reg_write_addr_ex  (reg_write_addr_ex),
         .alu_result_ex      (alu_result_ex),
         .mem_read_ex        (mem_read_ex),
+        .mem_sc_ex          (mem_sc_ex),
 
         // inputs for forwarding/stalling from M
         .reg_we_mem         (reg_we_mem),
