@@ -1,5 +1,5 @@
 $date
-	Sat Mar  3 14:20:44 2018
+	Sun Mar  4 14:29:03 2018
 $end
 $version
 	Icarus Verilog
@@ -3360,8 +3360,8 @@ b1 v#
 b1 !"
 b10 d#
 0w"
-0x"
 0u"
+0x"
 b10 S"
 b10 C#
 b10 z#
@@ -3729,8 +3729,8 @@ b1 ]#
 b1 D"
 b10 d#
 0w"
-0x"
 0u"
+0x"
 b10 S"
 b10 C#
 b10 z#
@@ -4072,8 +4072,8 @@ b1 v#
 b1 !"
 b10 d#
 1w"
-0x"
 0u"
+0x"
 b10 S"
 b10 C#
 b10 z#

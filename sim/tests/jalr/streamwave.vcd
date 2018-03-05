@@ -1,5 +1,5 @@
 $date
-	Sat Mar  3 14:21:05 2018
+	Sun Mar  4 14:28:56 2018
 $end
 $version
 	Icarus Verilog
@@ -1469,12 +1469,12 @@ bx K#
 bx E"
 bx <#
 bx \#
-b0 w
-b0 q"
-b0 T#
 b10 T"
 b10 B#
 b10 c#
+b0 w
+b0 q"
+b0 T#
 1P#
 0,"
 b0 {"
